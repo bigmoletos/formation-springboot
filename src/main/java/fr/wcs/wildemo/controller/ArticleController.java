@@ -1,0 +1,75 @@
+package fr.wcs.wildemo.controller;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import javax.validation.Valid;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
+
+import fr.wcs.wildemo.entity.Article;
+import fr.wcs.wildemo.service.ArticleService;
+
+@Controller
+public class ArticleController {
+	
+	@Autowired
+	private ArticleService service;
+
+//	@GetMapping("/")
+//	public ModelAndView index() {
+//		ModelAndView mav = new ModelAndView();
+//		mav.setViewName("index");
+//		mav.getModelMap().addAttribute("articles", this.service.getAll());
+//		return mav;
+//	}
+	
+	@GetMapping("/")
+	public String index2(Model model) {
+		model.addAttribute("articles", this.service.getAll());
+		return "index";
+	}
+	
+	@GetMapping("/create")
+	public String create(Model model) {
+		model.addAttribute("article", new Article());
+		return "form";
+	}
+	
+	@PostMapping("/form")
+	public String save(@Valid Article article, BindingResult result) {
+		if (result.hasErrors()) {
+			return "form";
+		} else {
+			if (article.getId() != null) {
+				this.service.update(new Article(article.getId(), article.getTitle(), article.getContent()));
+			} else {
+				service.create(article.getTitle(), article.getContent());
+			}
+			return "redirect:/";
+		}
+	}
+	
+	@GetMapping("/delete/{id}")
+	public String delete(@PathVariable Integer id) {
+		this.service.delete(id);
+		return "redirect:/";
+	}
+	
+	@GetMapping("/edit")
+	public String edit(Model model, Integer id) {
+		model.addAttribute("article", this.service.read(id));
+		return "form";
+	}
+}

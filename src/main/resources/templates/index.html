@@ -1,0 +1,20 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head th:replace="head.html :: head"></head>
+<body>
+	<h1>Super blog app</h1>
+	<h2>
+		<a th:href="@{/create}">Créer un article</a>
+	</h2>
+	<div class="articles">
+		<div th:each="art : ${articles}">
+			<h1>
+				<span th:text="${art.title}"></span>
+				<a th:href="@{/delete?id=} + ${art.id}">X</a>
+				<a th:href="@{/edit?id=} + ${art.id}">E</a>
+			</h1>
+			<p th:text="${art.content}"></p>
+		</div>
+	</div>
+</body>
+</html>
