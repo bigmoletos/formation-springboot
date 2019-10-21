@@ -1,10 +1,20 @@
 package fr.wcs.wildemo.entity;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Lob;
+import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 
+@Entity
+@Table(name = "article")
 public class Article {
 
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 
 	@NotBlank
@@ -13,16 +23,21 @@ public class Article {
 
 	@NotBlank
 	@Size(min = 10, max = 20000)
+	@Lob
 	private String content;
 
 	public Article() {
 	}
 
-	public Article(Integer id, String title, String content) {
-		super();
-		this.id = id;
+	public Article(String title, String content) {
+		this();
 		this.title = title;
 		this.content = content;
+	}
+	
+	public Article(Integer id, String title, String content) {
+		this(title, content);
+		this.id = id;
 	}
 
 	public Integer getId() {
