@@ -1,8 +1,6 @@
 package fr.wcs.wildemo.entity;
 
 import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 public class Article {
@@ -14,7 +12,7 @@ public class Article {
 	private String title;
 
 	@NotBlank
-	@Size(min = 10)
+	@Size(min = 10, max = 20000)
 	private String content;
 
 	public Article() {
@@ -72,5 +70,5 @@ public class Article {
 			return false;
 		return true;
 	}
-	
+
 }
