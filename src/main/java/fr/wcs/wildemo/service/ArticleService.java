@@ -21,6 +21,7 @@ public class ArticleService {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+
 	private List<Article> articles;
 	private int count;
 
