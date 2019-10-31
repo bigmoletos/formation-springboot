@@ -6,7 +6,7 @@ import org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfi
 import org.springframework.context.annotation.ComponentScan;
 
 @ComponentScan({ "fr.wcs.wildemo.controller", "fr.wcs.wildemo.service",
-		"fr.wcs.wildemo.repository", "fr.wcs.wildemo.config" })
+		"fr.wcs.wildemo.repository", "fr.wcs.wildemo" })
 @SpringBootApplication(exclude = { SecurityAutoConfiguration.class })
 public class WildemoApplication {
 

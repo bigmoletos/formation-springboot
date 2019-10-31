@@ -1,4 +1,4 @@
-package fr.wcs.wildemo.config;
+package fr.wcs.wildemo;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
