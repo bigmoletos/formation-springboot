@@ -1,14 +1,17 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:th="http://www.thymeleaf.org">
-<head th:replace="fragments/head.html :: head"></head>
+<head th:insert="fragments/head.html :: head"></head>
+<head>
+<link rel="stylesheet" th:href="@{/css/styles.css}">
+</head>
 <body>
 	<nav th:replace="fragments/navbar.html :: nav"></nav>
 	<div class="articles">
 		<div th:each="art : ${articles}">
 			<h1>
-				<span th:text="${art.title}"></span>
-				<a th:href="@{/delete/} + ${art.id}">X</a>
-				<a th:href="@{/edit?id=} + ${art.id}">E</a>
+				<span th:text="${art.title}"></span> <a
+					th:href="@{/delete/} + ${art.id}">X</a> <a
+					th:href="@{/edit?id=} + ${art.id}">E</a>
 			</h1>
 			<p th:text="${art.content}"></p>
 		</div>

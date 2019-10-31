@@ -19,6 +19,13 @@ public class Role implements GrantedAuthority {
 	private Integer id;
 	
 	private String name;
+	
+	public Role() {
+	}
+	
+	public Role(Integer id) {
+		this.id = id;
+	}
 
 	public Integer getId() {
 		return id;

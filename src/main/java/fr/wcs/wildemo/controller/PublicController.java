@@ -12,4 +12,9 @@ public class PublicController {
 	public String contact() {
 		return "public/contact";
 	}
+	
+	@GetMapping("/account/create")
+	public String createAccount() {
+		return "public/createAccount";
+	}
 }
