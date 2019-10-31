@@ -1,11 +1,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:th="http://www.thymeleaf.org">
-<head th:replace="head.html :: head"></head>
+<head th:include="fragments/head.html :: head"></head>
 <body>
-	<h1>Super blog app</h1>
-	<h2>
-		<a th:href="@{/create}">Créer un article</a>
-	</h2>
+	<nav th:replace="fragments/navbar.html :: nav"></nav>
 	<div class="articles">
 		<div th:each="art : ${articles}">
 			<h1>
