@@ -10,11 +10,6 @@ import fr.wcs.wildemo.repository.ArticleRepository;
 
 @Service
 public class ArticleService {
-//<<<<<<< HEAD
-//
-//	@Id
-//	@GeneratedValue(strategy = GenerationType.IDENTITY)
-//
 //	private List<Article> articles;
 //	private int count;
 //
@@ -31,7 +26,6 @@ public class ArticleService {
 //				new Article(this.count++, "Article n°5",
 //						"Nam maximus ullamcorper metus, vel sagittis elit mattis laoreet. Morbi euismod urna et mauris vehicula dignissim. Nunc nec rhoncus dui. Donec a varius arcu. Nulla facilisi. Morbi ut gravida libero, a fringilla urna. Aliquam nec lorem a turpis mattis ultrices in sit amet enim. Proin nec nibh est. Cras dignissim cursus erat, id lobortis velit auctor in.")));
 //	}
-//=======
 
 	@Autowired
 	private ArticleRepository repository;
