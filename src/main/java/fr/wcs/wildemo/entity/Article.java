@@ -1,12 +1,26 @@
 package fr.wcs.wildemo.entity;
 
+import java.io.Serializable;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.Lob;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
-public class Article {
+@Entity
+@Table(name = "article")
+public class Article implements Serializable {
 
+	private static final long serialVersionUID = 1L;
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 
 	@NotBlank
@@ -14,17 +28,26 @@ public class Article {
 	private String title;
 
 	@NotBlank
-	@Size(min = 10)
+	@Size(min = 10, max = 20000)
+	@Lob
 	private String content;
+	
+	@ManyToOne
+	@JoinColumn(name="author_id")
+	private Account author;
 
 	public Article() {
 	}
 
-	public Article(Integer id, String title, String content) {
-		super();
-		this.id = id;
+	public Article(String title, String content) {
+		this();
 		this.title = title;
 		this.content = content;
+	}
+	
+	public Article(Integer id, String title, String content) {
+		this(title, content);
+		this.id = id;
 	}
 
 	public Integer getId() {
@@ -72,5 +95,5 @@ public class Article {
 			return false;
 		return true;
 	}
-	
+
 }
