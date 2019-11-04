@@ -14,4 +14,5 @@ atelier Java spring Boot le 17 oct
 - Modifier ArticleService
  - Supprimer la collection articles et le constructeur
  - Ajouter un membre de type ArticleRepository injecté (@Autowired)
- - Remplacer les appels à la collection articles par des appels au repository (modifié) 
+ - Remplacer les appels à la collection articles par des appels au repository (modifié)
+ $2a$10$gz78HDOrKRDbW4PczUgJWuASzZfc1rKv6srshTW4BAlMgl9VO0FLq 
